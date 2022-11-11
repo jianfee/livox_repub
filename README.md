@@ -2,13 +2,13 @@
 官方livox_driver驱动livox雷达发出的点云topic有两种，一种是大疆览沃定制的格式CustomMsg格式，另一种是将CustomMsg格式 转换过的pointcloud2格式，参见 Livox雷达驱动程序发布点云格式CustomMsg、PointCloud2、pcl::PointXYZI、pcl::PointXYZINormal解析 现在将转换这部分的代码提取出来，方便 随时使用
 创建ros功能包:
 ```cpp
-				mkdir -p livox_repub/src
-				cd livox_repub/src
-				catkin_init_workspace 
+	mkdir -p livox_repub/src
+	cd livox_repub/src
+	catkin_init_workspace 
 
-        git clone https://github.com/jianfee/livox_repub.git
-				cd ..
-				catkin_make
+	git clone https://github.com/jianfee/livox_repub.git
+	cd ..
+	catkin_make
 ```
 运行：
         roslaunch livox_repub livox_repub.launch
