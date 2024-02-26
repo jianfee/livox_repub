@@ -1,25 +1,23 @@
 <?xml version="1.0"?>
-<package>
+<package format="3">
     <name>livox_repub</name>
     <version>0.0.0</version>
+    <description>The pcd2pgm package</description>
 
-    <description>This is a livox_repub package</description>
+    <maintainer email="eric@gmail.com">eric</maintainer>
 
-    <maintainer email="xxxxx@xxx.com">xxx</maintainer>
+    <license>GPLv2</license>
 
-    <license>BSD</license>
+    <buildtool_depend>ament_cmake</buildtool_depend>
 
-    <buildtool_depend>catkin</buildtool_depend>
-    <build_depend>roscpp</build_depend>
-    <build_depend>sensor_msgs</build_depend>
-    <build_depend>tf</build_depend>
-    <build_depend>pcl_ros</build_depend>
-    <build_depend>livox_ros_driver</build_depend>
+    <!-- ROS 2 Dependency tags -->
+    <depend>rclcpp</depend>
+    <depend>sensor_msgs</depend>
+    <depend>nav_msgs</depend>
+    <depend>livox_ros_driver2</depend>
 
-    <run_depend>sensor_msgs</run_depend>
-    <run_depend>roscpp</run_depend>
-    <run_depend>tf</run_depend>
-    <run_depend>pcl_ros</run_depend>
-    <run_depend>livox_ros_driver</run_depend>
+    <export>
+        <build_type>ament_cmake</build_type>
+    </export>
 
 </package>

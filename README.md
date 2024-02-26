@@ -6,20 +6,20 @@
 
 ## 创建ros功能包:
 
-```cpp
+```bash
     mkdir -p livox_repub/src
-cd livox_repub/src
-catkin_init_workspace
-
-git clone https://github.com/jianfee/livox_repub.git
-cd ..
-catkin_make
+    cd livox_repub/src
+    catkin_init_workspace
+    
+    git clone https://github.com/jianfee/livox_repub.git
+    cd ..
+    catkin_make
 ```
 
 ## 运行：
 
 ```bash
-roslaunch livox_repub livox_repub.launch
+    roslaunch livox_repub livox_repub.launch
 ```
 
 注意：这个包是要先订阅CustomMsg的话题/livox/lidar，然后发布PointCloud2格式的"/livox_pcl0"
@@ -27,8 +27,8 @@ roslaunch livox_repub livox_repub.launch
 转换后的PointCloud2点云可以通过rviz显示：
 
 ```bash
-rviz
-#or 
-roslaunch livox_repub livox_repub.launch
+    rviz
+    #or 
+    roslaunch livox_repub livox_repub.launch
 ```
 
