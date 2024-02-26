@@ -1,34 +1,46 @@
 cmake_minimum_required(VERSION 3.8)
 project(livox_repub)
 
-# SET(CMAKE_BUILD_TYPE "Debug")
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pthread -std=c++14")
+# Default to C++14
+if (NOT CMAKE_CXX_STANDARD)
+    set(CMAKE_CXX_STANDARD 14)
+endif ()
 
-find_package(catkin REQUIRED COMPONENTS
-        sensor_msgs
-        roscpp
-        pcl_ros
-        tf
-        livox_ros_driver
-)
+if (CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+    add_compile_options(-Wall -Wextra -Wpedantic)
+endif ()
 
-include_directories(
-        ${catkin_INCLUDE_DIRS}
-        ${PCL_INCLUDE_DIRS})
+# Find dependencies
+find_package(ament_cmake REQUIRED)
+find_package(rclcpp REQUIRED)
+find_package(sensor_msgs REQUIRED)
+find_package(pcl_ros REQUIRED)
+find_package(pcl_conversions  REQUIRED)
+find_package(livox_ros_driver2 REQUIRED)
 
-catkin_package(
-        CATKIN_DEPENDS sensor_msgs roscpp tf
-)
+# Include directories
 
+# Declare a C++ executable
 add_executable(${PROJECT_NAME} livox_repub.cpp)
-target_link_libraries(${PROJECT_NAME} ${catkin_LIBRARIES})
+ament_target_dependencies(${PROJECT_NAME}
+        rclcpp
+        sensor_msgs
+        pcl_ros
+        pcl_conversions
+        livox_ros_driver2
+)
 
+
+# Install targets
 install(TARGETS ${PROJECT_NAME}
-        ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
-        LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
-        RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+        DESTINATION lib/${PROJECT_NAME})
+
+install(
+        DIRECTORY launch
+        DESTINATION share/${PROJECT_NAME}
 )
 
-install(DIRECTORY launch/
-        DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/launch
-)
+# Export dependencies
+ament_export_dependencies(rclcpp sensor_msgs pcl_ros pcl_conversions livox_ros_driver2)
+
+ament_package()
