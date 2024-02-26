@@ -1,0 +1,4 @@
+<launch>
+    <include file="$(find livox_repub)/launch/livox_repub.launch"/>
+    <node pkg="rviz" type="rviz" name="rviz" args="-d $(find livox_repub)/rviz/livox_repub.rviz"/>
+</launch>
