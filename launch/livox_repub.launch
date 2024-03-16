@@ -1,0 +1,5 @@
+<launch>
+    <node pkg="livox_repub" type="livox_repub" name="livox_repub" output="screen">
+        <remap from="/livox/lidar" to="/livox/lidar"/>
+    </node>
+</launch>
